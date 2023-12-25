@@ -25,6 +25,7 @@ class Queue {
 
 	enqueue(value) {
 		let node = { value, next: null }
+
 		if (!this.last) {
 			this.first = this.last = node
 		} else {
@@ -37,11 +38,14 @@ class Queue {
 		if (!this.first) {
 			return null
 		}
+
 		let dequeued = this.first.value
 		this.first = this.first.next
+
 		if (!this.first) {
 			this.last = null
 		}
+
 		return dequeued
 	}
 }

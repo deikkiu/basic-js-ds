@@ -17,10 +17,12 @@ class BinarySearchTree {
 
 	add(data) {
 		let newNode = { data, left: null, right: null }
+
 		if (!this.rootNode) {
 			this.rootNode = newNode
 		} else {
 			let currentNode = this.rootNode
+
 			while (currentNode) {
 				if (data < currentNode.data) {
 					if (!currentNode.left) {
@@ -43,6 +45,7 @@ class BinarySearchTree {
 
 	has(data) {
 		let currentNode = this.rootNode
+
 		while (currentNode) {
 			if (data === currentNode.data) {
 				return true
@@ -50,11 +53,13 @@ class BinarySearchTree {
 			currentNode =
 				data < currentNode.data ? currentNode.left : currentNode.right
 		}
+
 		return false
 	}
 
 	find(data) {
 		let currentNode = this.rootNode
+
 		while (currentNode) {
 			if (data === currentNode.data) {
 				return currentNode
@@ -62,6 +67,7 @@ class BinarySearchTree {
 			currentNode =
 				data < currentNode.data ? currentNode.left : currentNode.right
 		}
+
 		return null
 	}
 
@@ -73,6 +79,7 @@ class BinarySearchTree {
 		if (!node) {
 			return null
 		}
+
 		if (data < node.data) {
 			node.left = this.removeNode(node.left, data)
 			return node
@@ -83,35 +90,45 @@ class BinarySearchTree {
 			if (!node.left && !node.right) {
 				return null
 			}
+
 			if (!node.left) {
 				return node.right
 			}
+
 			if (!node.right) {
 				return node.left
 			}
+
 			let minRight = node.right
+
 			while (minRight.left) {
 				minRight = minRight.left
 			}
+
 			node.data = minRight.data
 			node.right = this.removeNode(node.right, minRight.data)
+
 			return node
 		}
 	}
 
 	min() {
 		let currentNode = this.rootNode
+
 		while (currentNode && currentNode.left) {
 			currentNode = currentNode.left
 		}
+
 		return currentNode ? currentNode.data : null
 	}
 
 	max() {
 		let currentNode = this.rootNode
+
 		while (currentNode && currentNode.right) {
 			currentNode = currentNode.right
 		}
+
 		return currentNode ? currentNode.data : null
 	}
 }
